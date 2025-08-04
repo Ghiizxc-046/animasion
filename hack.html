@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HACKED ERROR</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Courier New', monospace;
+    }
+
+    .error-popup {
+      position: absolute;
+      width: 280px;
+      background: #111;
+      border: 2px solid #ff0033;
+      box-shadow: 0 0 15px #ff0033;
+      color: #ff5555;
+      z-index: 9999;
+      animation: popup 0.2s ease-in;
+    }
+
+    .error-header {
+      background: #ff0033;
+      color: black;
+      padding: 6px 10px;
+      font-weight: bold;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    .error-body {
+      padding: 20px;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .error-body .icon {
+      font-size: 24px;
+      color: #ff0033;
+    }
+
+    .error-footer {
+      text-align: right;
+      padding: 10px;
+    }
+
+    .error-footer button {
+      padding: 4px 10px;
+      font-size: 13px;
+      background: black;
+      color: #ff0033;
+      border: 1px solid #ff0033;
+      cursor: pointer;
+    }
+
+    .error-footer button:hover {
+      background: #ff0033;
+      color: black;
+    }
+
+    @keyframes popup {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  const messages = [
+    "HACKING DETECTED.",
+    "SYSTEM FAILURE.",
+    "UNAUTHORIZED ACCESS.",
+    "FATAL ERROR 0xDEAD.",
+    "KERNEL PANIC INJECTED.",
+    "MEMORY BREACH FOUND.",
+    "MALWARE EXECUTED.",
+    "ACCESS VIOLATION.",
+    "CRITICAL OVERLOAD.",
+    "ERROR: SYS_LOCK"
+  ];
+
+  const maxPopups = 120;
+
+  function createErrorPopup() {
+    const popup = document.createElement('div');
+    popup.className = 'error-popup';
+
+    const header = document.createElement('div');
+    header.className = 'error-header';
+    header.textContent = "!! ERROR SYSTEM !!";
+
+    const body = document.createElement('div');
+    body.className = 'error-body';
+
+    const icon = document.createElement('div');
+    icon.className = 'icon';
+    icon.textContent = '💀';
+
+    const text = document.createElement('div');
+    text.textContent = messages[Math.floor(Math.random() * messages.length)];
+
+    body.appendChild(icon);
+    body.appendChild(text);
+
+    const footer = document.createElement('div');
+    footer.className = 'error-footer';
+
+    const button = document.createElement('button');
+    button.textContent = "ABORT";
+
+    footer.appendChild(button);
+
+    popup.appendChild(header);
+    popup.appendChild(body);
+    popup.appendChild(footer);
+
+    // Posisi acak
+    const left = Math.random() * (window.innerWidth - 300);
+    const top = Math.random() * (window.innerHeight - 160);
+    popup.style.left = `${left}px`;
+    popup.style.top = `${top}px`;
+
+    document.body.appendChild(popup);
+
+    // Batasin jumlah popup
+    const popups = document.querySelectorAll('.error-popup');
+    if (popups.length > maxPopups) {
+      popups[0].remove();
+    }
+
+    // Tombol bisa hapus popup
+    button.addEventListener('click', () => {
+      popup.remove();
+    });
+  }
+
+  setInterval(createErrorPopup, 150);
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
